@@ -1,0 +1,83 @@
+
+
+.gallery-container{
+display: flex;
+flex-wrap: wrap;
+
+border: 5px solid rgb(12, 73, 120);
+border-radius: 10px;
+
+margin: 70px;
+}
+
+.gallery-container > img{
+    padding: 10px;
+    flex-grow: 1;
+
+    width: 200px;
+    height: 200px;
+    height: fit-content;
+
+    border: 1px solid black;
+    border-radius: 10px;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
+}
+.gallery-container > img:nth-child(3n){
+    
+    width: 300px;
+
+    height: fit-content;
+}
+
+.gallery-container > img:nth-child(4n){
+    
+    width: 400px;
+
+    height: fit-content;
+}
+
+.gallery-container > img:nth-child(6n){
+    
+    width: 350px;
+
+    height: fit-content;
+}
+
+
+
+@media (max-width: 500px) {
+    dialog{
+        /* margin: 2px; */
+        height: 90vh;
+        width: 90vw;
+
+    }
+
+    .gallery-container{
+        height: auto;
+
+        margin: 10px;
+    }
+
+    .gallery-container > img:nth-child(1n){
+        padding: 5px;
+        flex-grow: 1;
+    
+        width: 100px;
+        height: 100px;
+    
+    }
+
+
+    .user-interface{
+        margin: 5px;
+    }
+    
+    button{
+        width: 50px;
+    }
+
+}
+

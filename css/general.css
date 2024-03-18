@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    max-width: 100vw;
+    background-color: rgba(157, 193, 219, 0.302);
+
+    font-family:Arial, Helvetica, sans-serif;
+    font-family: body;
+    
+    background-image: url(/helpers/imgs/background.png);
+}
+
+.nav-container{
+
+    
+    background-color: rgb(179, 198, 255);
+    
+    border-radius: 5px;
+
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+@media(max-width:1025px){
+    .nav-container{
+        position: fixed;
+        top: 0px;
+    
+        z-index: 22;
+        width: 90vw;
+    }
+}
+
+ul:hover{
+    border-radius: 20px;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding-inline-start: 10px;
+
+    border-radius: 20px;
+}
+
+
+.nav-list{
+    display: flex;
+    gap: 10px;
+    
+    
+}
+
+
+.nav-list > li{
+flex-grow: 1;
+
+font-size: 1.5em;
+
+padding-inline-start: 10px;
+padding: 10px 10px;
+
+cursor: pointer;
+
+}
+
+a{
+    text-decoration: none;
+
+}
+
+.nav-list > li:hover{
+
+    background-color: rgb(111, 111, 182);
+    text-shadow: rgb(0, 255, 255) 1px 0 10px;
+}
+
+h1{
+text-align: center;
+
+font-size: 100px;
+font-family: h1;
+
+text-shadow: rgb(0, 0, 0) 10px 0 10px;
+background-color: rgba(73, 30, 174, 0.374);
+
+border-radius: 10px;
+
+box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+margin: 80px auto 80px;
+}
+
+
+@font-face {
+    font-family: body;
+    src: url('SuperFoods-2OxXo.ttf');
+}
+@font-face {
+    font-family: h1;
+    src: url('Bigparty4blue-x3W8q.ttf');
+}

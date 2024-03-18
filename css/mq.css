@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+    /* justify x axle */
+    /* align y axle */ 
+
+@media (min-width: 1025px) {
+
+    .generator-container{
+        display: grid;
+        grid-template-columns: minmax(750px, 1000px) auto;
+
+    }
+
+    .line-select{
+        height: 200px;
+        width: 200px;
+    
+        background-color: none;
+    
+        border: 4px dashed rgba(255, 0, 0, 0.59);
+    
+        position: fixed;
+    
+        z-index: 20;
+    
+        margin-left: 25%;
+    
+        transform: translate(-50%, -50%);
+    
+        bottom: calc(80vh - 250px);
+    }
+
+}
