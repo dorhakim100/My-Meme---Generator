@@ -47,12 +47,10 @@ function renderMeme(containerWidth) {
       gCurrentMeme = gMeme
     }
   } else {
-    console.log(gMeme)
     gMeme = loadFromStorage('selectedMeme')
-    console.log(gMeme)
+
     saveToStorage('currentMeme', gMeme)
     saveToStorage('selected', false)
-    console.log(loadFromStorage('currentMeme'))
   }
 
   const img = new Image()
