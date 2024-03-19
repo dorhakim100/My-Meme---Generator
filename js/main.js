@@ -24,7 +24,7 @@ let gFontStyle = 'Arial Black'
 function init() {
   const elImgContainer = document.querySelector('.gallery-container')
 
-  elImgContainer.innerHTML = getGallerySrc().join('')
+  elImgContainer.innerHTML += getGallerySrc().join('')
 
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')

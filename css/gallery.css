@@ -10,6 +10,30 @@ border-radius: 10px;
 margin: 70px;
 }
 
+.random-btn{
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    font-family: body;
+
+    background-color: #6082B6;
+    border: 2px solid rgb(177, 154, 189);
+    
+    height: 30px;
+    width: 200px;
+    
+    font-size: 1.5em;
+    
+    cursor: pointer;
+}
+
+.random-btn:hover{
+    background-color: #5D3FD3;
+    color: aliceblue;
+
+}
+
 .gallery-container > img{
     padding: 10px;
     flex-grow: 1;
