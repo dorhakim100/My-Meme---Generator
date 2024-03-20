@@ -81,7 +81,9 @@ background-color: rgb(69, 69, 69);
 border: 2px whitesmoke solid;
 
 position: relative;
-bottom: 25px;
+bottom: 35px;
+left: -35px;
+
 
 /* opacity: 0; */
 display: none;
@@ -90,7 +92,7 @@ transition: 0.2s;
 }
 
 .share-btn{
-
+/* cursor: pointer; */
 }
 
 .download-btn{
@@ -155,6 +157,11 @@ transition: 0.2s;
     height: 25px;
 
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+
+.fa-facebook{
+    color: #385996;
 }
 
 .text-container{

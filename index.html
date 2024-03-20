@@ -27,7 +27,7 @@
         </ul>
     </nav>
       <dialog class="dialog gallery">
-        <button class="x-btn" onclick="onCloseModal()">X</button>
+        <button class="x-btn" onclick="onCloseGallery()">X</button>
         <div class="gallery-controller-container">
 
             <button class="random-btn" onclick="onRenderNewMeme()">Random</button>
@@ -65,9 +65,9 @@
             </div>
                 <canvas class="canvas">
                 </canvas>
-                <div>
-                    <button class="share-btn" onclick="onOpenShareOptions()"><i class="fa-solid fa-share-from-square"></i></button>
-                    <div class="share-options">
+                <div onmouseover="onOpenShareOptions(this)" onmouseleave="closeShareOptions()">
+                    <button class="share-btn"><i class="fa-solid fa-share-from-square"></i></button>
+                    <div class="share-options" onmouseleave="closeShareOptions()">
                         <a class="download-btn" href="" onclick="onDownloadMeme(this)" download="my-meme">Download</a>
                         <button class="save-btn" onclick="onSaveMeme()">Save</button>
                         <button class="facebook-btn" onclick="onUploadImg()"><i class="fa-brands fa-facebook"></i></button>

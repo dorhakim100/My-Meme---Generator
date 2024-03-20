@@ -179,17 +179,6 @@ function getGallerySrc(searchValue) {
   return strHtmls
 }
 
-function onSelectMEME(elImg) {
-  console.log(elImg.id)
-
-  gMeme = createMeme(+elImg.id)
-  saveToStorage('selectedMeme', gMeme)
-  saveToStorage('selected', true)
-
-  console.log(loadFromStorage('selectedMeme'))
-  window.location.href = 'http://127.0.0.1:5500/index.html'
-}
-
 function createKeywords() {
   const elKeywordsContainer = document.querySelector('.keywords-search')
   if (loadFromStorage('keywordMap'))

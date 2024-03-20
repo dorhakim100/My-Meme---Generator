@@ -334,7 +334,21 @@ function openModal(elClass) {
   elScreen.style.display = 'block'
 }
 
-function onCloseModal() {
+function onSelectMEME(elImg) {
+  console.log(elImg.id)
+
+  gMeme = createMeme(+elImg.id)
+  saveToStorage('selectedMeme', gMeme)
+  saveToStorage('selected', true)
+
+  console.log(loadFromStorage('selectedMeme'))
+
+  renderMeme(gCanvasContainerWidth)
+  onCloseGallery()
+  // window.location.href = 'http://127.0.0.1:5500/index.html'
+}
+
+function onCloseGallery() {
   const galleryClass = 'gallery'
 
   closeModal(galleryClass)
@@ -510,26 +524,45 @@ function onSearchKeyword(elSpan) {
   elImgContainer.innerHTML = getGallerySrc(word).join('')
 }
 
-function onOpenShareOptions() {
+function onOpenShareOptions(elBtn) {
   const elShareOptions = document.querySelector('.share-options')
 
-  if (elShareOptions.style.display === 'none') {
-    elShareOptions.style.display = 'initial'
-  } else {
-    elShareOptions.style.display = 'none'
-  }
-  console.log(elShareOptions.style.display)
+  elShareOptions.style.display = 'initial'
+  // if (elShareOptions.style.display === 'none') {
+  // } else {
+  //   elShareOptions.style.display = 'none'
+  // }
+  // console.log(elShareOptions.style.display)
 
-  gIsShare = true
-  setTimeout(() => (gIsShare = false), 10)
+  // gIsShare = true
+  // setTimeout(() => (gIsShare = false), 10)
   // elShareOptions.style.opacity === '0'
   //   ? (elShareOptions.style.opacity = '1')
   //   : (elShareOptions.style.opacity = '0')
+  // const elShareOptions = document.querySelector('.share-options')
+  elShareOptions.addEventListener('mouseenter', () => {
+    elShareOptions.style.display = 'initial'
+  })
+  elShareOptions.addEventListener('mouseleave', () => {})
+
+  // setTimeout(
+  //   elBtn.addEventListener('mouseleave', () => {
+  //     elShareOptions.style.display = 'none'
+  //   }),
+  //   1000
+  // )
 }
 
 function closeShareOptions() {
-  if (gIsShare) return
   const elShareOptions = document.querySelector('.share-options')
+
+  // elShareOptions.addEventListener('mouseenter', () => {
+  //   elShareOptions.style.display = 'initial'
+  //   const isOptions = true
+  // })
+  // if (isOptions) return
+
+  // setTimeout(() => (elShareOptions.style.display = 'none'), 100)
 
   elShareOptions.style.display = 'none'
 }
