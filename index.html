@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/gallery.css">
-
+    <script src="https://kit.fontawesome.com/64c9fbe692.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="init()" onresize="resizeCanvas()">
+<body onload="init()" onresize="resizeCanvas()" onclick="closeShareOptions()">
     <img src="background.png" class="background" alt="">
     <div class="screen">
 
@@ -65,8 +65,14 @@
             </div>
                 <canvas class="canvas">
                 </canvas>
-                <a class="download-btn" href="" onclick="onDownloadMeme(this)" download="my-meme">Download</a>
-                <button class="save-btn" onclick="onSaveMeme()">Save</button>
+                <div>
+                    <button class="share-btn" onclick="onOpenShareOptions()"><i class="fa-solid fa-share-from-square"></i></button>
+                    <div class="share-options">
+                        <a class="download-btn" href="" onclick="onDownloadMeme(this)" download="my-meme">Download</a>
+                        <button class="save-btn" onclick="onSaveMeme()">Save</button>
+                        <button class="facebook-btn" onclick="onUploadImg()"><i class="fa-brands fa-facebook"></i></button>
+                    </div>
+                </div>
             </div>
         <div class="user-interface">
             <h2>Generate Meme</h2>

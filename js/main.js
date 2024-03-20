@@ -21,6 +21,8 @@ let gTextAlign = 'center'
 
 let gFontStyle = 'Arial Black'
 
+let gIsShare
+
 function init() {
   const elImgContainer = document.querySelector('.gallery-container')
   elImgContainer.innerHTML += getGallerySrc().join('')
@@ -34,6 +36,9 @@ function init() {
   changeColorInput()
   displayFontSize()
   createKeywords()
+
+  const elShareOptions = document.querySelector('.share-options')
+  elShareOptions.style.display = 'none'
 }
 
 function renderMeme(containerWidth) {
@@ -503,4 +508,28 @@ function onSearchKeyword(elSpan) {
 
   const elImgContainer = document.querySelector('.gallery-container')
   elImgContainer.innerHTML = getGallerySrc(word).join('')
+}
+
+function onOpenShareOptions() {
+  const elShareOptions = document.querySelector('.share-options')
+
+  if (elShareOptions.style.display === 'none') {
+    elShareOptions.style.display = 'initial'
+  } else {
+    elShareOptions.style.display = 'none'
+  }
+  console.log(elShareOptions.style.display)
+
+  gIsShare = true
+  setTimeout(() => (gIsShare = false), 10)
+  // elShareOptions.style.opacity === '0'
+  //   ? (elShareOptions.style.opacity = '1')
+  //   : (elShareOptions.style.opacity = '0')
+}
+
+function closeShareOptions() {
+  if (gIsShare) return
+  const elShareOptions = document.querySelector('.share-options')
+
+  elShareOptions.style.display = 'none'
 }
