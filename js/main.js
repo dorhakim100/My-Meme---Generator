@@ -33,6 +33,7 @@ function init() {
 
   changeColorInput()
   displayFontSize()
+  createKeywords()
 }
 
 function renderMeme(containerWidth) {
@@ -489,4 +490,17 @@ function onSearchMemes(elSearch) {
   const search = elSearch.value
   const elImgContainer = document.querySelector('.gallery-container')
   elImgContainer.innerHTML = getGallerySrc(search).join('')
+}
+
+function onSearchKeyword(elSpan) {
+  console.log(elSpan)
+  const word = elSpan.innerText
+  console.log(gKeywordSearchCountMap[word])
+  gKeywordSearchCountMap[word]++
+  console.log(gKeywordSearchCountMap[word])
+  saveToStorage('keywordMap', gKeywordSearchCountMap)
+  elSpan.style.fontSize = gKeywordSearchCountMap[word] * 3 + 'px'
+
+  const elImgContainer = document.querySelector('.gallery-container')
+  elImgContainer.innerHTML = getGallerySrc(word).join('')
 }

@@ -9,26 +9,20 @@ border-radius: 10px;
 
 margin: 70px;
 
-margin-top: 140px;
+margin-top: 240px;
 
 height: 80vh;
-}
-
-@media(max-width:500px){
-    .gallery-container{
-        margin-top: 300px;
-    }
 }
 
 .gallery-controller-container{
     background-color: #a5c2ee;
     width: 75vw;
-    height: 100px;
-
+    height: 200px;
+    
     position: fixed;
-
+    
     border-radius: 20px;
-
+    
 }
 
 .random-btn{
@@ -52,19 +46,19 @@ height: 80vh;
 
 .x-btn{
     position: fixed;
-
+    
     border-radius: 50%;
-
+    
     height: 30px;
     width: 30px;
-
+    
     font-weight: bold;
-
+    
     background-color: #92A8D1;
     color: aliceblue;
-
+    
     cursor: pointer;
-
+    
     z-index: 2;
 }
 
@@ -88,38 +82,55 @@ height: 80vh;
     top: 150px;
 }
 
+.keywords-search{
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    top: 200px;
+
+    display: flex;
+    gap: 30px;
+}
+
+.keywords-search > *{
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+
 .gallery-container > img{
     padding: 10px;
     flex-grow: 1;
-
+    
     width: 200px;
     height: 200px;
     height: fit-content;
-
+    
     border: 1px solid black;
     border-radius: 10px;
-
+    
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
 }
 .gallery-container > img:nth-child(3n){
     
     width: 300px;
-
+    
     height: fit-content;
 }
 
 .gallery-container > img:nth-child(4n){
     
     width: 400px;
-
+    
     height: fit-content;
 }
 
 .gallery-container > img:nth-child(6n){
     
     width: 350px;
-
+    
     height: fit-content;
 }
 
@@ -130,33 +141,46 @@ height: 80vh;
         /* margin: 2px; */
         height: 90vh;
         width: 90vw;
-
+        
     }
+    
 
+        .gallery-container{
+            margin-top: 300px;
+        }
+        .keywords-search{
+            display: none;
+        }
+    
+        .gallery-controller-container{
+            height: 100px;
+        }
+    
+    
     .random-btn{
         margin-top: 40px;
     }
     .search{
         margin-top: 50px;
     }
-
+    
     .gallery-container{
         height: auto;
-
+        
         margin: 10px;
         margin-top: 120px;
     }
-
+    
     .gallery-container > img:nth-child(1n){
         padding: 5px;
         flex-grow: 1;
-    
+        
         width: 100px;
         height: 100px;
-    
+        
     }
-
-
+    
+    
     .user-interface{
         margin: 5px;
     }
@@ -164,6 +188,6 @@ height: 80vh;
     button{
         width: 50px;
     }
-
+    
 }
 

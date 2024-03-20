@@ -97,9 +97,9 @@ let gImgs = [
   },
 ]
 
-let gMeme = createMeme()
-
 let gKeywordSearchCountMap = { funny: 10, cute: 12, sarcasm: 5 }
+
+let gMeme = createMeme()
 
 var gIsSelected
 
@@ -188,4 +188,22 @@ function onSelectMEME(elImg) {
 
   console.log(loadFromStorage('selectedMeme'))
   window.location.href = 'http://127.0.0.1:5500/index.html'
+}
+
+function createKeywords() {
+  const elKeywordsContainer = document.querySelector('.keywords-search')
+  if (loadFromStorage('keywordMap'))
+    gKeywordSearchCountMap = loadFromStorage('keywordMap')
+  for (const search in gKeywordSearchCountMap) {
+    const count = gKeywordSearchCountMap[search]
+    elKeywordsContainer.innerHTML += `<span id="${search}" onclick="onSearchKeyword(this)">${search}</span>`
+    // console.log(`${search}: ${count}`)
+  }
+  const spans = elKeywordsContainer.querySelectorAll('span')
+  for (var i = 0; i < spans.length; i++) {
+    const word = spans[i].id
+    const countStr = gKeywordSearchCountMap[word] * 3 + 'px'
+    console.log(countStr)
+    spans[i].style.fontSize = countStr
+  }
 }
