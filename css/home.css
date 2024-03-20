@@ -30,26 +30,7 @@ dialog{
 
 
 
-.x-btn{
-    position: fixed;
 
-    border-radius: 50%;
-
-    height: 30px;
-    width: 30px;
-
-    font-weight: bold;
-
-    background-color: #92A8D1;
-    color: aliceblue;
-
-    cursor: pointer;
-}
-
-.x-btn:hover{
-    background-color: #900b0b;
-    color: aliceblue;
-}
 
 .canvas-container{
 
@@ -108,6 +89,29 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 .download-btn:hover{
     text-shadow: rgba(0, 242, 255, 0.661) 1px 0 10px;
     
+}
+
+.save-btn{
+    background-color: rgb(233, 233, 233);
+    border: 1px solid rgb(37, 37, 37);
+    
+    padding: 3px;
+    
+    border-radius: 5px;
+    
+    position: relative;
+    bottom: 25px;
+    
+    font-family: body;
+    
+    cursor: pointer;
+
+    height: 25px;
+}
+
+.save-btn:hover{
+    text-shadow: rgba(0, 242, 255, 0.661) 1px 0 10px;
+
 }
 
 .text-container{

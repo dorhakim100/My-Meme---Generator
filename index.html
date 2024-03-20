@@ -23,12 +23,27 @@
         <ul class="nav-list">
             <li onclick="onRenderNewMeme()" title="Generate New Meme">Random Meme</li>
             <li onclick="onOpenGallery()">Gallery</li>
-            <li onclick="onAboutOpen()">About</li>
+            <li onclick="onMyMemeGallery()">My Memes</li>
         </ul>
     </nav>
       <dialog class="dialog gallery">
         <button class="x-btn" onclick="onCloseModal()">X</button>
-        <button class="random-btn" onclick="onRenderNewMeme()">Random</button>
+        <div class="gallery-controller-container">
+
+            <button class="random-btn" onclick="onRenderNewMeme()">Random</button>
+            <div class="search">
+                <label for="search">search:</label>
+                <input list="searches" name="search" id="search" onchange="onSearchMemes(this)">
+                
+                <datalist id="searches">
+                    <option value="All">
+                    <option value="Cute">
+                    <option value="Funny">
+                    <option value="Animal">
+                    <option value="Sarcasm">
+                </datalist>
+            </div>
+        </div>
           <div class="gallery-container">
           </div>
       </dialog>
@@ -45,6 +60,7 @@
                 <canvas class="canvas">
                 </canvas>
                 <a class="download-btn" href="" onclick="onDownloadMeme(this)" download="my-meme">Download</a>
+                <button class="save-btn" onclick="onSaveMeme()">Save</button>
             </div>
         <div class="user-interface">
             <h2>Generate Meme</h2>

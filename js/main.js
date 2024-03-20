@@ -23,7 +23,6 @@ let gFontStyle = 'Arial Black'
 
 function init() {
   const elImgContainer = document.querySelector('.gallery-container')
-
   elImgContainer.innerHTML += getGallerySrc().join('')
 
   gElCanvas = document.querySelector('canvas')
@@ -132,6 +131,7 @@ function onDownloadMeme(elLink) {
   let imgContent
 
   imgContent = gElCanvas.toDataURL('image/png')
+  // console.log(imgContent)
   elLink.href = imgContent
 }
 
@@ -371,6 +371,122 @@ function onChangeFontStyle(elInput) {
   renderMeme(gCanvasContainerWidth)
 }
 
-function onAboutOpen() {
-  alert('Thank you for using this app')
+function onMyMemeGallery() {
+  // renderMyMemeGallery()
+  // const galleryClass = 'gallery'
+  // openModal(galleryClass)
+}
+// // clearFromStorage('myMemeGallery')
+// function onSaveMeme() {
+//   let myMemeGallery
+//   const meme = {
+//     gMeme: gMeme,
+//     data: gCtx.getImageData(0, 0, gElCanvas.width, gElCanvas.height),
+//   }
+//   if (loadFromStorage('myMemeGallery')) {
+//     myMemeGallery = loadFromStorage('myMemeGallery')
+//     console.log(myMemeGallery)
+
+//     myMemeGallery.push(meme)
+//     saveToStorage('myMemeGallery', myMemeGallery)
+//     console.log(myMemeGallery)
+//     return
+//   }
+
+//   myMemeGallery = []
+//   myMemeGallery.push(meme)
+//   saveToStorage('myMemeGallery', myMemeGallery)
+//   console.log(myMemeGallery)
+// }
+
+// function renderMyMemeGallery() {
+//   const memes = loadFromStorage('myMemeGallery')
+
+//   let strHtmls = memes.map(
+//     (meme) => `<canvas class="canvas"></canvas>`
+//     // `<img onclick="onSelectMEME(this)" src="meme-imgs/${meme.selectedImgId}.jpg" alt="" style="cursor: pointer;">`
+//   )
+//   const elGallery = document.querySelector('.gallery-container')
+
+//   elGallery.innerHTML = strHtmls.join('')
+
+//   const elCanvases = elGallery.querySelectorAll('canvas')
+
+//   for (var i = 0; i < elCanvases.length; i++) {
+//     let ctx = elCanvases[i].getContext('2d')
+//     ctx.putImageData(memes[i].data, 10, 10)
+//   }
+// }
+
+// // function renderMyMemeGallery() {
+// //   const memes = loadFromStorage('myMemeGallery')
+// //   console.log(memes)
+// //   let strHtmls = memes.map(
+// //     (meme) =>
+// //       `<canvas class="canvas" id="${meme.memeId}" height="100" width="100"></canvas>`
+// //     // `<img onclick="onSelectMEME(this)" src="meme-imgs/${meme.selectedImgId}.jpg" alt="" style="cursor: pointer;">`
+// //   )
+
+// //   console.log(strHtmls)
+// //   const elGallery = document.querySelector('.gallery-container')
+
+// //   elGallery.innerHTML = strHtmls.join('')
+
+// //   const elCanvases = elGallery.querySelectorAll('canvas')
+// //   console.log(elCanvases)
+// //   for (var i = 0; i < elCanvases.length; i++) {
+// //     console.log('works')
+// //     console.log(elCanvases)
+// //     const id = elCanvases[i].id
+// //     const elCanvas = document.querySelector(`#${id}`)
+// //     renderMemes(id)
+// //   }
+// // }
+
+// // // const meme = {
+// // //   selectedImgId: id,
+// // //   selectedLineIdx: 0,
+// // //   lines: [
+// // //     {
+// // //       txt: 'Hello',
+// // //       size: 120,
+// // //       color: '#ffffff',
+// // //       position: { x: gCanvasMiddle, y: 100 },
+// // //     },
+// // //   ],
+// // // }
+
+// // function renderMemes(memeId) {
+// //   const memeGallery = loadFromStorage('myMemeGallery')
+// //   console.log(memeId)
+// //   const meme = memeGallery.find((meme) => meme.memeId === memeId)
+
+// //   const elCanvas = document.querySelector(`#${memeId}`)
+// //   const ctx = elCanvas.getContext('2d')
+
+// //   const img = new Image()
+
+// //   console.log(meme)
+// //   // const { selectedImgId } = meme
+// //   img.src = `meme-imgs/${meme.selectedImgId}.jpg`
+// //   console.log(img)
+
+// //   const { selectedLineIdx } = meme
+
+// //   img.onload = () => {
+// //     ctx.drawImage(img, 0, 0, 100, 100)
+// //     if (meme.lines.length > 1) {
+// //       const otherLine = getOtherLineIdx()
+// //       isOther = true
+// //       console.log(otherLine)
+// //       addText(otherLine)
+// //     }
+// //     addText(selectedLineIdx)
+// //   }
+// // }
+
+function onSearchMemes(elSearch) {
+  const search = elSearch.value
+  const elImgContainer = document.querySelector('.gallery-container')
+  elImgContainer.innerHTML = getGallerySrc(search).join('')
 }

@@ -119,6 +119,7 @@ function createMeme(id = getRandomIntInclusive(1, gImgs.length)) {
         position: { x: gCanvasMiddle, y: 100 },
       },
     ],
+    memeId: makeId(),
   }
 
   return meme
@@ -154,8 +155,22 @@ function resizeCanvas() {
 
 // Gallery
 
-function getGallerySrc() {
+function getGallerySrc(searchValue) {
   const imgs = getImgs()
+
+  if (searchValue && searchValue !== 'All') {
+    searchValue = searchValue.toLowerCase()
+    const filtered = imgs.filter(
+      (img) =>
+        img.keywords[0] === searchValue || img.keywords[1] === searchValue
+    )
+    console.log(filtered)
+    let strHtmls = filtered.map(
+      (img) =>
+        `<img id="${img.id}" onclick="onSelectMEME(this)" src="${img.url}" alt="" style="cursor: pointer;">`
+    )
+    return strHtmls
+  }
 
   let strHtmls = imgs.map(
     (img) =>
