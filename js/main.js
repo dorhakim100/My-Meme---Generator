@@ -461,25 +461,6 @@ function onClickShare() {
     : (elShareOptions.style.display = 'none')
 }
 
-// function editTextOnCanvas() {
-//   const elScreenWidth = document.body.clientWidth
-//   if (elScreenWidth < 1025) return
-
-//   const { selectedLineIdx } = gMeme
-
-//   const y = ev.y
-
-//   if (y < gCanvasMiddle && selectedLineIdx === 0) {
-//   } else if (y > gCanvasMiddle && selectedLineIdx === 1) {
-//   }
-// }
-
-// function renderTextEdit() {
-//   const elUserInterface = document.querySelector('.user-interface')
-
-//   return elUserInterface.innerHTML
-// }
-
 function onTransClick(elBtn) {
   console.log('elBtn.innerText:', elBtn.innerText)
   const elBody = document.querySelector('body')
