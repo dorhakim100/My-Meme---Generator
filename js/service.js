@@ -35,67 +35,80 @@ let gImgs = [
     url: `meme-imgs/${gId}.jpg`,
     keywords: ['funny', 'sarcasm'],
   },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: ++gId,
-    url: `meme-imgs/${gId}.jpg`,
-    keywords: ['funny', 'sarcasm'],
-  },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
+  // {
+  //   id: ++gId,
+  //   url: `meme-imgs/${gId}.jpg`,
+  //   keywords: ['funny', 'sarcasm'],
+  // },
 ]
+
+addImgs(12)
+
+function addImgs(imgsLength) {
+  for (var i = 0; i < imgsLength; i++) {
+    const img = {
+      id: ++gId,
+      url: `meme-imgs/${gId}.jpg`,
+      keywords: ['funny', 'sarcasm'],
+    }
+    gImgs.push(img)
+  }
+}
 
 let gKeywordSearchCountMap = { funny: 10, cute: 12, sarcasm: 5, animal: 8 }
 

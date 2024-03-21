@@ -23,6 +23,9 @@ let gFontStyle = 'Arial Black'
 
 let gIsShare
 
+let gLang
+let gElDirection
+
 const memeFont = new FontFace('meme', url('impact.ttf'))
 
 function init() {
@@ -458,21 +461,47 @@ function onClickShare() {
     : (elShareOptions.style.display = 'none')
 }
 
-function editTextOnCanvas() {
-  const elScreenWidth = document.body.clientWidth
-  if (elScreenWidth < 1025) return
+// function editTextOnCanvas() {
+//   const elScreenWidth = document.body.clientWidth
+//   if (elScreenWidth < 1025) return
 
-  const { selectedLineIdx } = gMeme
+//   const { selectedLineIdx } = gMeme
 
-  const y = ev.y
+//   const y = ev.y
 
-  if (y < gCanvasMiddle && selectedLineIdx === 0) {
-  } else if (y > gCanvasMiddle && selectedLineIdx === 1) {
+//   if (y < gCanvasMiddle && selectedLineIdx === 0) {
+//   } else if (y > gCanvasMiddle && selectedLineIdx === 1) {
+//   }
+// }
+
+// function renderTextEdit() {
+//   const elUserInterface = document.querySelector('.user-interface')
+
+//   return elUserInterface.innerHTML
+// }
+
+function onTransClick(elBtn) {
+  console.log('elBtn.innerText:', elBtn.innerText)
+  const elBody = document.querySelector('body')
+  const elTitle = document.querySelector('h1')
+  switch (elBtn.innerText) {
+    case 'Hebrew':
+      gLang = 'he'
+      gElDirection = 'rtl'
+      elBody.style.direction = gElDirection
+      elBtn.innerText = 'English'
+
+      elTitle.style.fontFamily = 'meme'
+      elTitle.style.color = '#385996'
+      break
+    case 'English':
+      gLang = 'en'
+      gElDirection = 'ltr'
+      elBody.style.direction = gElDirection
+      elBtn.innerText = 'Hebrew'
+
+      elTitle.style.fontFamily = 'h1'
+      break
   }
-}
-
-function renderTextEdit() {
-  const elUserInterface = document.querySelector('.user-interface')
-
-  return elUserInterface.innerHTML
+  doTrans()
 }

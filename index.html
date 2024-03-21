@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My MEME Generator</title>
+    <title data-trans="appTitle">My MEME Generator</title>
     <link rel="icon" type="image/x-icon" href="meme-imgs/5.jpg">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/general.css">
@@ -21,9 +21,9 @@
     </div>
     <nav class="nav-container">
         <ul class="nav-list">
-            <li onclick="onRenderNewMeme()" title="Generate New Meme">Random Meme</li>
-            <li onclick="onOpenGallery()">Gallery</li>
-            <li onclick="onAbout()">About</li>
+            <li data-trans="randomMeme" onclick="onRenderNewMeme()" title="Generate New Meme">Random Meme</li>
+            <li data-trans="gallery" onclick="onOpenGallery()">Gallery</li>
+            <li data-trans="about" onclick="onAbout()">About</li>
         </ul>
     </nav>
     <dialog class="about-dialog">
@@ -39,7 +39,7 @@
         <button class="x-btn" onclick="onCloseGallery()">X</button>
         <div class="gallery-controller-container">
 
-            <button class="random-btn" onclick="onRenderNewMeme()">Random</button>
+            <button data-trans="randomMeme" class="random-btn" onclick="onRenderNewMeme()">Random Meme</button>
             <div class="search">
                 <label for="search">search:</label>
                 <input list="searches" name="search" id="search" onchange="onSearchMemes(this)">
@@ -63,7 +63,7 @@
           </div>
       </dialog>
 
-<h1>My MEME Generator</h1>
+<h1 data-trans="appTitle">My MEME Generator</h1>
     
     <div class="generator-container">
 
@@ -87,17 +87,17 @@
                 </div>
             </div>
         <div class="user-interface">
-            <h2>Generate Meme</h2>
+            <h2 data-trans="generateMeme">Generate Meme</h2>
             <div class="text-container">
                 <div class="text-input">
                     <div>
-                        <label for="text">Text:</label>
-                        <input class="input text" oninput="onChangeMemeText()" type="text" placeholder="Your Text Here">
+                        <label data-trans="text" for="text">Text:</label>
+                        <input data-trans="yourText" class="input text" oninput="onChangeMemeText()" type="text" placeholder="Your Text Here">
                     </div>
 
-                    <button onclick="onAddLine()">Add Text</button>
-                    <button onclick="onClearCanvas()">Clear Text</button>
-                    <button onclick="onSwitchLine()">Switch Line</button>
+                    <button data-trans="addText" onclick="onAddLine()">Add Text</button>
+                    <button data-trans="clearText" onclick="onClearCanvas()">Clear Text</button>
+                    <button data-trans="switchLine" onclick="onSwitchLine()">Switch Line</button>
                 </div>
                 <div class="size-container">
                     <button onclick="onChangeSize(this)" class="decrease" id="decrease"><img src="helpers/decrease-font.png" alt="" style="width: 20px; background-color: none;"></button>
@@ -108,7 +108,7 @@
             </div>
 
             <div>
-                <label for="color">Color:</label>
+                <label data-trans="color" for="color">Color:</label>
                 <input class="input color" onchange="onChangeColor(this)" type="color" name="" id="">
 
             </div>
@@ -116,20 +116,20 @@
             
             <div class="adjust-text-container" style="display: inline-block;">
 
-                <div class="text-align">
+                <div data-trans="textAlign" class="text-align">
                     <label for="align">Text Align:</label>
                     <form>
                         <input onchange="onAlignText(this)" type="radio" name="text-align" value="start">
-                        <label for="start">Start</label>
+                        <label data-trans="start" for="start">Start</label>
                         <input onchange="onAlignText(this)" type="radio" name="text-align" value="center">
-                        <label for="center">Center</label>
+                        <label data-trans="center" for="center">Center</label>
                         <input onchange="onAlignText(this)" type="radio" name="text-align" value="end">
-                        <label for="end">End</label>
+                        <label data-trans="end" for="end">End</label>
                     </form>
                 </div>
 
                 <div class="adjust-font">
-                    <label for="font-style">Font Style:</label>
+                    <label data-trans="fontStyle" for="font-style">Font Style:</label>
                     <input list="font-styles" name="font-style" id="font-style" onchange="onChangeFontStyle(this)">
 
                     <datalist id="font-styles">
@@ -142,11 +142,13 @@
                 </div>
 
             </div>
+            <button onclick="onTransClick(this)">Hebrew</button>
         </div>
     </div>
     
     <script src="js/storage.js"></script>
     <script src="js/utils.js"></script>
+    <script src="js/trans.js"></script>
     <script src="js/service.js"></script>
     <script src="js/main.js"></script>
 </body>
