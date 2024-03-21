@@ -106,6 +106,8 @@ transition: 0.2s;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     /* position: relative; */
     /* bottom: 25px; */
+
+
     
 }
 
@@ -154,14 +156,56 @@ transition: 0.2s;
     
     cursor: pointer;
 
-    height: 25px;
+    height: 45px;
 
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    
+}
+
+.whatsapp-btn{
+    background-color: rgb(233, 233, 233);
+    border: 1px solid rgb(37, 37, 37);
+    
+    padding: 3px;
+    
+    border-radius: 5px;
+    /*     
+    position: relative;
+    bottom: 25px; */
+    
+    font-family: body;
+    
+    cursor: pointer;
+    
+    height: 45px;
+    
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
 }
 
 .fa-facebook{
     color: #385996;
+    font-size: 30px;
+}
+.facebook-btn:hover .fa-facebook{
+    color: #ffffff;
+}
+.facebook-btn:hover{
+    background-color: #385996;
+    /* color: #ffffff; */
+}
+
+.fa-whatsapp{
+    font-size: 30px;
+    color: 	#128c7e;
+    font-weight: bold;
+}
+.whatsapp-btn:hover .fa-whatsapp{
+    color: #ffffff;
+}
+.whatsapp-btn:hover{
+    background-color: 	#25d366;
+    /* color: #ffffff; */
 }
 
 .text-container{

@@ -109,8 +109,8 @@ function addText(line) {
 
     gCtx.fillStyle = gMeme.lines[otherLine].color
 
-    gCtx.fillText(gMeme.lines[otherLine].txt, gCanvasMiddle, y)
-    gCtx.strokeText(gMeme.lines[otherLine].txt, gCanvasMiddle, y)
+    gCtx.fillText(gMeme.lines[otherLine].txt.toUpperCase(), gCanvasMiddle, y)
+    gCtx.strokeText(gMeme.lines[otherLine].txt.toUpperCase(), gCanvasMiddle, y)
 
     isOther = false
   }
@@ -119,8 +119,8 @@ function addText(line) {
 
   gCtx.fillStyle = gMeme.lines[line].color
 
-  gCtx.fillText(gMeme.lines[line].txt, gCanvasMiddle, y)
-  gCtx.strokeText(gMeme.lines[line].txt, gCanvasMiddle, y)
+  gCtx.fillText(gMeme.lines[line].txt.toUpperCase(), gCanvasMiddle, y)
+  gCtx.strokeText(gMeme.lines[line].txt.toUpperCase(), gCanvasMiddle, y)
 }
 
 function clearCanvas() {

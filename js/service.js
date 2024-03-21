@@ -194,14 +194,21 @@ function createKeywords() {
   }
 }
 
-function onUploadImg() {
+function onUploadImg(elBtn) {
   // Gets the image from the canvas
   const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
 
   function onSuccess(uploadedImgUrl) {
     // Handle some special characters
     const url = encodeURIComponent(uploadedImgUrl)
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`)
+    if (elBtn.id === 'facebook') {
+      window.open(
+        `https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`
+      )
+    } else if (elBtn.id === 'whatsapp') {
+      window.location =
+        'whatsapp://send?text=' + encodeURIComponent(uploadedImgUrl)
+    }
   }
 
   // Send the image to the server
