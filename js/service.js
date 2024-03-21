@@ -127,7 +127,7 @@ function createMeme(id = getRandomIntInclusive(1, gImgs.length)) {
 
 function createLine() {
   const line = {
-    txt: 'Insert Txt',
+    txt: 'Txt',
     size: 80,
     color: '#ff0000',
     position: { x: gCanvasMiddle, y: gCanvasContainerWidth - 100 },
@@ -150,6 +150,7 @@ function resizeCanvas() {
   gCanvasMiddle = gElCanvas.width / 2
   console.log(gElContainer)
   console.log(gElCanvas.width, gElCanvas.height)
+  resizeFontSize()
   renderMeme(gCanvasContainerWidth)
 }
 

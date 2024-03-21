@@ -30,13 +30,13 @@ function init() {
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
   resizeCanvas()
+  resizeFontSize()
 
   renderMeme()
 
   changeColorInput()
   displayFontSize()
   createKeywords()
-
   const elShareOptions = document.querySelector('.share-options')
   elShareOptions.style.display = 'none'
 }
@@ -80,12 +80,24 @@ function renderMeme(containerWidth) {
   saveToStorage('currentMeme', gMeme)
 }
 
+function resizeFontSize() {
+  console.log(gCanvasContainerWidth)
+  const { selectedLineIdx } = gMeme
+
+  gMeme.lines[selectedLineIdx].size = gCanvasContainerWidth / 5
+
+  displayFontSize()
+  const elSizeDisplay = document.querySelector('.font-size-display')
+  elSizeDisplay.innerText = gMeme.lines[selectedLineIdx].size
+}
+
 function addText(line) {
   if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
   console.log(line)
   let y
-  if (line === 0) y = 100
-  else y = gCanvasContainerWidth - 100
+  let lowerY = gCanvasContainerWidth - gCanvasContainerWidth / 5
+  if (line === 0) y = gCanvasContainerWidth / 5
+  else y = lowerY
   gCtx.lineWidth = 3
   gCtx.strokeStyle = gColor
 
@@ -224,6 +236,9 @@ function onAddLine() {
   const line = createLine()
 
   gMeme.lines.push(line)
+  gMeme.selectedLineIdx = 1
+  resizeFontSize()
+  gMeme.selectedLineIdx = 0
 
   addText(1)
   onSwitchLine()
@@ -238,14 +253,18 @@ function getLineOption(lineIdx) {
 
 function onSwitchLine() {
   if (gMeme.lines.length === 1) return
-  console.log(gMeme.selectedLineIdx)
+
   switchLine()
-  console.log(gMeme.selectedLineIdx)
 }
 
 function switchLine() {
   const { selectedLineIdx } = gMeme
   const elLineBorder = document.querySelector('.line-select')
+  if (gCanvasContainerWidth < 500) {
+    elLineBorder.style.height = '1px'
+  } else {
+    elLineBorder.style.height = '1px'
+  }
   if (selectedLineIdx === 0) {
     gMeme.selectedLineIdx = 1
 
@@ -254,13 +273,14 @@ function switchLine() {
     console.log(elLineBorder.style.bottom)
     elLineBorder.style.display = 'block'
     elLineBorder.style.top = ''
-    elLineBorder.style.bottom = '-50px'
+    // elLineBorder.style.bottom = '-50px'
+    elLineBorder.style.bottom = gCanvasContainerWidth / 9 + 'px'
   } else {
     gMeme.selectedLineIdx = 0
 
     changeColorInput()
 
-    elLineBorder.style.top = '100px'
+    elLineBorder.style.top = gCanvasContainerWidth / 3.5 + 'px'
   }
 }
 
@@ -530,29 +550,11 @@ function onOpenShareOptions(elBtn) {
   const elShareOptions = document.querySelector('.share-options')
 
   elShareOptions.style.display = 'initial'
-  // if (elShareOptions.style.display === 'none') {
-  // } else {
-  //   elShareOptions.style.display = 'none'
-  // }
-  // console.log(elShareOptions.style.display)
 
-  // gIsShare = true
-  // setTimeout(() => (gIsShare = false), 10)
-  // elShareOptions.style.opacity === '0'
-  //   ? (elShareOptions.style.opacity = '1')
-  //   : (elShareOptions.style.opacity = '0')
-  // const elShareOptions = document.querySelector('.share-options')
   elShareOptions.addEventListener('mouseenter', () => {
     elShareOptions.style.display = 'initial'
   })
   elShareOptions.addEventListener('mouseleave', () => {})
-
-  // setTimeout(
-  //   elBtn.addEventListener('mouseleave', () => {
-  //     elShareOptions.style.display = 'none'
-  //   }),
-  //   1000
-  // )
 }
 
 function closeShareOptions() {
@@ -560,21 +562,34 @@ function closeShareOptions() {
   if (elScreenWidth < 1025) return
   const elShareOptions = document.querySelector('.share-options')
 
-  // elShareOptions.addEventListener('mouseenter', () => {
-  //   elShareOptions.style.display = 'initial'
-  //   const isOptions = true
-  // })
-  // if (isOptions) return
-
-  // setTimeout(() => (elShareOptions.style.display = 'none'), 100)
-
   elShareOptions.style.display = 'none'
 }
 
 function onClickShare() {
+  const elScreenWidth = document.body.clientWidth
+  if (elScreenWidth > 1025) return
   const elShareOptions = document.querySelector('.share-options')
 
   elShareOptions.style.display === 'none'
     ? (elShareOptions.style.display = 'initial')
     : (elShareOptions.style.display = 'none')
+}
+
+function editTextOnCanvas() {
+  const elScreenWidth = document.body.clientWidth
+  if (elScreenWidth < 1025) return
+
+  const { selectedLineIdx } = gMeme
+
+  const y = ev.y
+
+  if (y < gCanvasMiddle && selectedLineIdx === 0) {
+  } else if (y > gCanvasMiddle && selectedLineIdx === 1) {
+  }
+}
+
+function renderTextEdit() {
+  const elUserInterface = document.querySelector('.user-interface')
+
+  return elUserInterface.innerHTML
 }
