@@ -258,6 +258,15 @@ display: none;
     color: aliceblue;
 }
 
+.trans-btn{
+    background-color: #385996;
+    color: #cedbf3;
+    font-weight: 800;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
 @media (max-width:435px) {
 
     h1{

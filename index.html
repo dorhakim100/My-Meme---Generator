@@ -116,15 +116,15 @@
             
             <div class="adjust-text-container" style="display: inline-block;">
 
-                <div data-trans="textAlign" class="text-align">
+                <div class="text-align">
                     <label for="align">Text Align:</label>
                     <form>
                         <input onchange="onAlignText(this)" type="radio" name="text-align" value="start">
-                        <label data-trans="start" for="start">Start</label>
+                        <label for="start">Start</label>
                         <input onchange="onAlignText(this)" type="radio" name="text-align" value="center">
-                        <label data-trans="center" for="center">Center</label>
+                        <label for="center">Center</label>
                         <input onchange="onAlignText(this)" type="radio" name="text-align" value="end">
-                        <label data-trans="end" for="end">End</label>
+                        <label for="end">End</label>
                     </form>
                 </div>
 
@@ -142,7 +142,7 @@
                 </div>
 
             </div>
-            <button onclick="onTransClick(this)">Hebrew</button>
+            <button class="trans-btn" onclick="onTransClick(this)">Hebrew</button>
         </div>
     </div>
     

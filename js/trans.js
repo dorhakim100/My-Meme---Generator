@@ -14,7 +14,7 @@ let gTrans = {
     he: 'גלרייה',
   },
   about: {
-    en: 'about',
+    en: 'About',
     he: 'אודות',
   },
   generateMeme: {
@@ -22,12 +22,12 @@ let gTrans = {
     he: 'מכולל המימ',
   },
   text: {
-    en: 'Text',
-    he: 'טקסט',
+    en: 'Text:',
+    he: 'טקסט:',
   },
   yourText: {
     en: 'Your Text Here',
-    he: 'הקלד כאן',
+    he: 'הקלד כאן:',
   },
   addText: {
     en: 'Add Text',
@@ -38,32 +38,20 @@ let gTrans = {
     he: 'נקה טקסט',
   },
   switchLine: {
-    en: 'switch Line',
+    en: 'Switch Line',
     he: 'החלף שורה',
   },
   color: {
-    en: 'Color',
-    he: 'צבע',
+    en: 'Color:',
+    he: 'צבע:',
   },
   textAlign: {
-    en: 'Text Align',
-    he: 'סידור טקסט',
-  },
-  start: {
-    en: 'Start',
-    he: 'התחלה',
-  },
-  center: {
-    en: 'Center',
-    he: 'אמצע',
-  },
-  end: {
-    en: 'End',
-    he: 'סוף',
+    en: 'Text Align:',
+    he: 'סידור טקסט:',
   },
   fontStyle: {
-    en: 'Font Style',
-    he: 'סגנון טקסט',
+    en: 'Font Style:',
+    he: 'סגנון טקסט:',
   },
 }
 
