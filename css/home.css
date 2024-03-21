@@ -185,6 +185,18 @@ transition: 0.2s;
 }
 
 @media (max-width:435px) {
+
+    h1{
+        width: 80vw;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 40px;
+
+        color: #385996;
+        -webkit-text-stroke: 1.5px #92A8D1;
+        /* text-stroke: 4px #92A8D1; */
+        /* border: 2px solid #92A8D1; */
+    }
+
     .size-container{
         grid-template-rows: 1;
         grid-template-rows: repeat(4,1fr);

@@ -19,9 +19,11 @@ let isOther = false
 
 let gTextAlign = 'center'
 
-let gFontStyle = 'meme'
+let gFontStyle = 'Arial Black'
 
 let gIsShare
+
+const memeFont = new FontFace('meme', url('impact.ttf'))
 
 function init() {
   const elImgContainer = document.querySelector('.gallery-container')
@@ -393,6 +395,10 @@ function onChangeFontStyle(elInput) {
   switch (style) {
     case 'Classic Meme':
       gFontStyle = 'meme'
+      break
+
+    case 'Arial Black (Default)':
+      gFontStyle = 'Arial Black'
       break
 
     case 'Monospace':
