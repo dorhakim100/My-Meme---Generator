@@ -525,6 +525,8 @@ function onSearchKeyword(elSpan) {
 }
 
 function onOpenShareOptions(elBtn) {
+  const elScreenWidth = document.body.clientWidth
+  if (elScreenWidth < 1025) return
   const elShareOptions = document.querySelector('.share-options')
 
   elShareOptions.style.display = 'initial'
@@ -554,6 +556,8 @@ function onOpenShareOptions(elBtn) {
 }
 
 function closeShareOptions() {
+  const elScreenWidth = document.body.clientWidth
+  if (elScreenWidth < 1025) return
   const elShareOptions = document.querySelector('.share-options')
 
   // elShareOptions.addEventListener('mouseenter', () => {
@@ -565,4 +569,12 @@ function closeShareOptions() {
   // setTimeout(() => (elShareOptions.style.display = 'none'), 100)
 
   elShareOptions.style.display = 'none'
+}
+
+function onClickShare() {
+  const elShareOptions = document.querySelector('.share-options')
+
+  elShareOptions.style.display === 'none'
+    ? (elShareOptions.style.display = 'initial')
+    : (elShareOptions.style.display = 'none')
 }
