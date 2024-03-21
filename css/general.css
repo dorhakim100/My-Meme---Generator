@@ -97,6 +97,7 @@ font-family: h1;
 
 text-shadow: rgb(0, 0, 0) 10px 0 10px;
 background-color: rgba(73, 30, 174, 0.374);
+color: blue;
 
 border-radius: 10px;
 
@@ -113,4 +114,8 @@ margin: 80px auto 80px;
 @font-face {
     font-family: h1;
     src: url('Bigparty4blue-x3W8q.ttf');
+}
+@font-face {
+    font-family: meme;
+    src: url('impact.ttf');
 }

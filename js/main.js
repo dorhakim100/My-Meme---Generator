@@ -19,7 +19,7 @@ let isOther = false
 
 let gTextAlign = 'center'
 
-let gFontStyle = 'Arial Black'
+let gFontStyle = 'meme'
 
 let gIsShare
 
@@ -392,7 +392,7 @@ function onChangeFontStyle(elInput) {
 
   switch (style) {
     case 'Classic Meme':
-      gFontStyle = 'Arial Black'
+      gFontStyle = 'meme'
       break
 
     case 'Monospace':
