@@ -184,6 +184,35 @@ transition: 0.2s;
     
 }
 
+.about-dialog{
+    /* text-align: center; */
+}
+
+.x-btn-about{
+    position: relative;
+    /* left: 15%; */
+    /* bottom: 20px; */
+    
+    border-radius: 50%;
+    
+    height: 30px;
+    width: 30px;
+    
+    font-weight: bold;
+    
+    background-color: #92A8D1;
+    color: aliceblue;
+    
+    cursor: pointer;
+    
+    z-index: 2;
+}
+
+.x-btn-about:hover{
+    background-color: #900b0b;
+    color: aliceblue;
+}
+
 @media (max-width:435px) {
 
     h1{

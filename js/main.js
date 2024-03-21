@@ -44,8 +44,6 @@ function init() {
 }
 
 function renderMeme(containerWidth) {
-  console.log(loadFromStorage('selected'))
-
   if (loadFromStorage('selected') !== true) {
     if (loadFromStorage('currentMeme')) {
       // gMeme = loadFromStorage('currentMeme')
@@ -62,10 +60,9 @@ function renderMeme(containerWidth) {
 
   const img = new Image()
   if (!containerWidth) containerWidth = img.naturalWidth
-  console.log(gMeme)
+
   const { selectedImgId } = gMeme
   img.src = `meme-imgs/${selectedImgId}.jpg`
-  console.log(img)
 
   const { selectedLineIdx } = gMeme
 
@@ -74,7 +71,7 @@ function renderMeme(containerWidth) {
     if (gMeme.lines.length > 1) {
       const otherLine = getOtherLineIdx()
       isOther = true
-      console.log(otherLine)
+
       addText(otherLine)
     }
     addText(selectedLineIdx)
@@ -83,7 +80,6 @@ function renderMeme(containerWidth) {
 }
 
 function resizeFontSize() {
-  console.log(gCanvasContainerWidth)
   const { selectedLineIdx } = gMeme
 
   gMeme.lines[selectedLineIdx].size = gCanvasContainerWidth / 5
@@ -95,7 +91,7 @@ function resizeFontSize() {
 
 function addText(line) {
   if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
-  console.log(line)
+
   let y
   let lowerY = gCanvasContainerWidth - gCanvasContainerWidth / 5
   if (line === 0) y = gCanvasContainerWidth / 5
@@ -118,7 +114,7 @@ function addText(line) {
 
     isOther = false
   }
-  console.log(gMeme.lines[line])
+
   gCtx.font = `${gMeme.lines[line].size}px ${gFontStyle}`
 
   gCtx.fillStyle = gMeme.lines[line].color
@@ -133,16 +129,14 @@ function clearCanvas() {
 
 function onChangeMemeText() {
   if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
-  console.log(gMeme)
 
   const { selectedLineIdx } = gMeme
-  console.log(selectedLineIdx)
+
   clearCanvas()
 
   const elInput = document.querySelector('.text')
 
   gMeme.lines[selectedLineIdx].txt = elInput.value
-  console.log(gMeme.lines[selectedLineIdx].txt)
 
   renderMeme(gCanvasContainerWidth)
 }
@@ -151,7 +145,7 @@ function onDownloadMeme(elLink) {
   let imgContent
 
   imgContent = gElCanvas.toDataURL('image/png')
-  // console.log(imgContent)
+
   elLink.href = imgContent
 }
 
@@ -177,7 +171,7 @@ function onChangeColor(elColor) {
   gFillColor = elColor.value
   const { selectedLineIdx } = gMeme
   gMeme.lines[selectedLineIdx].color = gFillColor
-  console.log(gMeme.lines[selectedLineIdx])
+
   addText(selectedLineIdx)
 }
 
@@ -197,12 +191,10 @@ function onChangeSize(elBtn) {
       gFontSize -= 10
       break
   }
-  console.log(gFontSize)
 
   gMeme.lines[selectedLineIdx].size = +gFontSize
   clearCanvas()
   renderMeme(gCanvasContainerWidth)
-  // addText()
 
   const elInputRange = document.querySelector('.size-range')
   elInputRange.value = gFontSize
@@ -215,10 +207,9 @@ function onChangeSizeRange(elInputRange) {
   const { selectedLineIdx } = gMeme
   const fontSize = elInputRange.value
   gMeme.lines[selectedLineIdx].size = +fontSize
-  console.log(fontSize)
+
   clearCanvas()
   renderMeme(gCanvasContainerWidth)
-  // addText()
 
   displayFontSize()
   const elSizeDisplay = document.querySelector('.font-size-display')
@@ -271,8 +262,6 @@ function switchLine() {
     gMeme.selectedLineIdx = 1
 
     changeColorInput()
-    console.log(elLineBorder.style.top)
-    console.log(elLineBorder.style.bottom)
     elLineBorder.style.display = 'block'
     elLineBorder.style.top = ''
     // elLineBorder.style.bottom = '-50px'
@@ -290,7 +279,6 @@ function copyOtherLine() {
   let otherLine
   const { selectedLineIdx } = gMeme
   selectedLineIdx === 0 ? (otherLine = 1) : (otherLine = 0)
-  console.log(gMeme.lines[otherLine])
 
   gOtherLine = otherLine
 }
@@ -309,7 +297,6 @@ function onCanvasClick(ev) {
 
   const { selectedLineIdx } = gMeme
 
-  console.log(gCanvasMiddle)
   if (y < gCanvasMiddle && selectedLineIdx === 1) {
     switchLine()
   } else if (y > gCanvasMiddle && selectedLineIdx === 0) {
@@ -318,7 +305,6 @@ function onCanvasClick(ev) {
 }
 
 function onAlignText(elInput) {
-  console.log(elInput.value)
   switch (elInput.value) {
     case 'start':
       gTextAlign = 'end'
@@ -357,17 +343,12 @@ function openModal(elClass) {
 }
 
 function onSelectMEME(elImg) {
-  console.log(elImg.id)
-
   gMeme = createMeme(+elImg.id)
   saveToStorage('selectedMeme', gMeme)
   saveToStorage('selected', true)
 
-  console.log(loadFromStorage('selectedMeme'))
-
   renderMeme(gCanvasContainerWidth)
   onCloseGallery()
-  // window.location.href = 'http://127.0.0.1:5500/index.html'
 }
 
 function onCloseGallery() {
@@ -387,7 +368,6 @@ function closeModal(elClass) {
 }
 
 function onChangeFontStyle(elInput) {
-  console.log(elInput.value)
   const style = elInput.value
 
   const { selectedLineIdx } = gMeme
@@ -417,119 +397,19 @@ function onChangeFontStyle(elInput) {
   renderMeme(gCanvasContainerWidth)
 }
 
-function onMyMemeGallery() {
+function onAbout() {
+  console.log('works')
+  const elAboutDialog = document.querySelector('.about-dialog')
+  console.log(elAboutDialog)
+  openModal('about-dialog')
   // renderMyMemeGallery()
   // const galleryClass = 'gallery'
   // openModal(galleryClass)
 }
-// // clearFromStorage('myMemeGallery')
-// function onSaveMeme() {
-//   let myMemeGallery
-//   const meme = {
-//     gMeme: gMeme,
-//     data: gCtx.getImageData(0, 0, gElCanvas.width, gElCanvas.height),
-//   }
-//   if (loadFromStorage('myMemeGallery')) {
-//     myMemeGallery = loadFromStorage('myMemeGallery')
-//     console.log(myMemeGallery)
 
-//     myMemeGallery.push(meme)
-//     saveToStorage('myMemeGallery', myMemeGallery)
-//     console.log(myMemeGallery)
-//     return
-//   }
-
-//   myMemeGallery = []
-//   myMemeGallery.push(meme)
-//   saveToStorage('myMemeGallery', myMemeGallery)
-//   console.log(myMemeGallery)
-// }
-
-// function renderMyMemeGallery() {
-//   const memes = loadFromStorage('myMemeGallery')
-
-//   let strHtmls = memes.map(
-//     (meme) => `<canvas class="canvas"></canvas>`
-//     // `<img onclick="onSelectMEME(this)" src="meme-imgs/${meme.selectedImgId}.jpg" alt="" style="cursor: pointer;">`
-//   )
-//   const elGallery = document.querySelector('.gallery-container')
-
-//   elGallery.innerHTML = strHtmls.join('')
-
-//   const elCanvases = elGallery.querySelectorAll('canvas')
-
-//   for (var i = 0; i < elCanvases.length; i++) {
-//     let ctx = elCanvases[i].getContext('2d')
-//     ctx.putImageData(memes[i].data, 10, 10)
-//   }
-// }
-
-// // function renderMyMemeGallery() {
-// //   const memes = loadFromStorage('myMemeGallery')
-// //   console.log(memes)
-// //   let strHtmls = memes.map(
-// //     (meme) =>
-// //       `<canvas class="canvas" id="${meme.memeId}" height="100" width="100"></canvas>`
-// //     // `<img onclick="onSelectMEME(this)" src="meme-imgs/${meme.selectedImgId}.jpg" alt="" style="cursor: pointer;">`
-// //   )
-
-// //   console.log(strHtmls)
-// //   const elGallery = document.querySelector('.gallery-container')
-
-// //   elGallery.innerHTML = strHtmls.join('')
-
-// //   const elCanvases = elGallery.querySelectorAll('canvas')
-// //   console.log(elCanvases)
-// //   for (var i = 0; i < elCanvases.length; i++) {
-// //     console.log('works')
-// //     console.log(elCanvases)
-// //     const id = elCanvases[i].id
-// //     const elCanvas = document.querySelector(`#${id}`)
-// //     renderMemes(id)
-// //   }
-// // }
-
-// // // const meme = {
-// // //   selectedImgId: id,
-// // //   selectedLineIdx: 0,
-// // //   lines: [
-// // //     {
-// // //       txt: 'Hello',
-// // //       size: 120,
-// // //       color: '#ffffff',
-// // //       position: { x: gCanvasMiddle, y: 100 },
-// // //     },
-// // //   ],
-// // // }
-
-// // function renderMemes(memeId) {
-// //   const memeGallery = loadFromStorage('myMemeGallery')
-// //   console.log(memeId)
-// //   const meme = memeGallery.find((meme) => meme.memeId === memeId)
-
-// //   const elCanvas = document.querySelector(`#${memeId}`)
-// //   const ctx = elCanvas.getContext('2d')
-
-// //   const img = new Image()
-
-// //   console.log(meme)
-// //   // const { selectedImgId } = meme
-// //   img.src = `meme-imgs/${meme.selectedImgId}.jpg`
-// //   console.log(img)
-
-// //   const { selectedLineIdx } = meme
-
-// //   img.onload = () => {
-// //     ctx.drawImage(img, 0, 0, 100, 100)
-// //     if (meme.lines.length > 1) {
-// //       const otherLine = getOtherLineIdx()
-// //       isOther = true
-// //       console.log(otherLine)
-// //       addText(otherLine)
-// //     }
-// //     addText(selectedLineIdx)
-// //   }
-// // }
+function onCloseAbout() {
+  closeModal('about-dialog')
+}
 
 function onSearchMemes(elSearch) {
   const search = elSearch.value
@@ -538,11 +418,8 @@ function onSearchMemes(elSearch) {
 }
 
 function onSearchKeyword(elSpan) {
-  console.log(elSpan)
   const word = elSpan.innerText
-  console.log(gKeywordSearchCountMap[word])
   gKeywordSearchCountMap[word]++
-  console.log(gKeywordSearchCountMap[word])
   saveToStorage('keywordMap', gKeywordSearchCountMap)
   elSpan.style.fontSize = gKeywordSearchCountMap[word] * 3 + 'px'
 

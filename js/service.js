@@ -148,8 +148,6 @@ function resizeCanvas() {
   gCanvasContainerWidth = gElContainer.clientWidth
 
   gCanvasMiddle = gElCanvas.width / 2
-  console.log(gElContainer)
-  console.log(gElCanvas.width, gElCanvas.height)
   resizeFontSize()
   renderMeme(gCanvasContainerWidth)
 }
@@ -165,7 +163,7 @@ function getGallerySrc(searchValue) {
       (img) =>
         img.keywords[0] === searchValue || img.keywords[1] === searchValue
     )
-    console.log(filtered)
+
     let strHtmls = filtered.map(
       (img) =>
         `<img id="${img.id}" onclick="onSelectMEME(this)" src="${img.url}" alt="" style="cursor: pointer;">`
@@ -187,13 +185,11 @@ function createKeywords() {
   for (const search in gKeywordSearchCountMap) {
     const count = gKeywordSearchCountMap[search]
     elKeywordsContainer.innerHTML += `<span id="${search}" onclick="onSearchKeyword(this)">${search}</span>`
-    // console.log(`${search}: ${count}`)
   }
   const spans = elKeywordsContainer.querySelectorAll('span')
   for (var i = 0; i < spans.length; i++) {
     const word = spans[i].id
     const countStr = gKeywordSearchCountMap[word] * 3 + 'px'
-    console.log(countStr)
     spans[i].style.fontSize = countStr
   }
 }
@@ -232,7 +228,6 @@ function doUploadImg(imgDataUrl, onSuccess) {
 
     // If the response is ok, call the onSuccess callback function,
     // that will create the link to facebook using the url we got
-    console.log('Got back live url:', url)
     onSuccess(url)
   }
   XHR.onerror = (req, ev) => {

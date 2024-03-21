@@ -23,9 +23,18 @@
         <ul class="nav-list">
             <li onclick="onRenderNewMeme()" title="Generate New Meme">Random Meme</li>
             <li onclick="onOpenGallery()">Gallery</li>
-            <li onclick="onMyMemeGallery()">My Memes</li>
+            <li onclick="onAbout()">About</li>
         </ul>
     </nav>
+    <dialog class="about-dialog">
+        <button class="x-btn-about" onclick="onCloseAbout()" style="cursor: pointer;">X</button>
+        <h2 style="text-align: center;">Thank you for using this app</h2>
+        <h2 style="text-align: center; color: rgb(12, 67, 154);">My MEME Generator</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis similique accusantium vel quia inventore eaque esse cum ratione deserunt? Rem ex explicabo sapiente quaerat a debitis commodi provident? Impedit, vero?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis similique accusantium vel quia inventore eaque esse cum ratione deserunt? Rem ex explicabo sapiente quaerat a debitis commodi provident? Impedit, vero?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis similique accusantium vel quia inventore eaque esse cum ratione deserunt? Rem ex explicabo sapiente quaerat a debitis commodi provident? Impedit, vero?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis similique accusantium vel quia inventore eaque esse cum ratione deserunt? Rem ex explicabo sapiente quaerat a debitis commodi provident? Impedit, vero?</p>
+    </dialog>
       <dialog class="dialog gallery">
         <button class="x-btn" onclick="onCloseGallery()">X</button>
         <div class="gallery-controller-container">
