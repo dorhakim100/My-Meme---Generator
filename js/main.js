@@ -279,6 +279,7 @@ function getLineOption(lineIdx) {
 
 function onSwitchLine() {
   if (gMeme.lines.length === 1) return
+  if (gIsClicked) return
 
   switchLine()
 }
@@ -463,9 +464,8 @@ function onChangeFontStyle(elInput) {
 }
 
 function onAbout() {
-  console.log('works')
   const elAboutDialog = document.querySelector('.about-dialog')
-  console.log(elAboutDialog)
+
   openModal('about-dialog')
   // renderMyMemeGallery()
   // const galleryClass = 'gallery'
@@ -524,7 +524,6 @@ function onClickShare() {
 }
 
 function onTransClick(elBtn) {
-  console.log('elBtn.innerText:', elBtn.innerText)
   const elBody = document.querySelector('body')
   const elTitle = document.querySelector('h1')
   switch (elBtn.innerText) {
@@ -579,15 +578,13 @@ function onMoveText(ev) {
   const currentFontSize = gMeme.lines[selectedLineIdx].size
   const offsetY = ev.offsetY
   const offsetX = ev.offsetX
-  console.log(offsetX)
+
   const distanceFromText = Math.abs(gUpperY - offsetY)
 
   if (selectedLineIdx === 0) {
-    console.log('gUpperY:', gUpperY)
     gUpperY = offsetY
     gUpperX = offsetX
-    console.log('gUpperX:', gUpperX)
-    console.log('offsetX:', offsetX)
+
     changeLinePos()
   } else {
     gLowerY = offsetY
@@ -596,9 +593,6 @@ function onMoveText(ev) {
   }
   clearCanvas()
   renderMeme(gCanvasContainerWidth)
-  //   console.log(gUpperY)
-  // }
-  console.log(gUpperY)
 }
 
 function onDown() {
