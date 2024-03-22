@@ -26,6 +26,14 @@ let gIsShare
 let gLang
 let gElDirection
 
+let gUpperY
+let gLowerY
+
+let gUpperX
+let gLowerX
+
+let gIsClicked = false
+
 const memeFont = new FontFace('meme', url('impact.ttf'))
 
 function init() {
@@ -35,6 +43,7 @@ function init() {
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
   resizeCanvas()
+  resizeXY()
   resizeFontSize()
 
   renderMeme()
@@ -44,6 +53,14 @@ function init() {
   createKeywords()
   const elShareOptions = document.querySelector('.share-options')
   elShareOptions.style.display = 'none'
+}
+
+function resizeXY() {
+  gUpperY = gCanvasContainerWidth / 5
+  gLowerY = gCanvasContainerWidth - gCanvasContainerWidth / 5
+
+  gUpperX = gCanvasMiddle
+  gLowerX = gCanvasMiddle
 }
 
 function renderMeme(containerWidth) {
@@ -96,9 +113,16 @@ function addText(line) {
   if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
 
   let y
-  let lowerY = gCanvasContainerWidth - gCanvasContainerWidth / 5
-  if (line === 0) y = gCanvasContainerWidth / 5
-  else y = lowerY
+  let x
+
+  if (line === 0) {
+    y = gUpperY
+    x = gUpperX
+  } else {
+    y = gLowerY
+    x = gLowerX
+  }
+  console.log('x:', x)
   gCtx.lineWidth = 3
   gCtx.strokeStyle = gColor
 
@@ -112,8 +136,8 @@ function addText(line) {
 
     gCtx.fillStyle = gMeme.lines[otherLine].color
 
-    gCtx.fillText(gMeme.lines[otherLine].txt.toUpperCase(), gCanvasMiddle, y)
-    gCtx.strokeText(gMeme.lines[otherLine].txt.toUpperCase(), gCanvasMiddle, y)
+    gCtx.fillText(gMeme.lines[otherLine].txt.toUpperCase(), x, y)
+    gCtx.strokeText(gMeme.lines[otherLine].txt.toUpperCase(), x, y)
 
     isOther = false
   }
@@ -122,8 +146,8 @@ function addText(line) {
 
   gCtx.fillStyle = gMeme.lines[line].color
 
-  gCtx.fillText(gMeme.lines[line].txt.toUpperCase(), gCanvasMiddle, y)
-  gCtx.strokeText(gMeme.lines[line].txt.toUpperCase(), gCanvasMiddle, y)
+  gCtx.fillText(gMeme.lines[line].txt.toUpperCase(), x, y)
+  gCtx.strokeText(gMeme.lines[line].txt.toUpperCase(), x, y)
 }
 
 function clearCanvas() {
@@ -277,6 +301,8 @@ function switchLine() {
     elLineBorder.style.top = gCanvasContainerWidth / 3.5 + 'px'
   }
 }
+
+function changeLinePos() {}
 
 function copyOtherLine() {
   let otherLine
@@ -485,4 +511,63 @@ function onTransClick(elBtn) {
       break
   }
   doTrans()
+}
+
+function onEnterText(ev) {
+  const { selectedLineIdx } = gMeme
+  let y
+  if (selectedLineIdx === 0) {
+    y = gUpperY
+  } else {
+    y = gLowerY
+  }
+  const currentFontSize = gMeme.lines[selectedLineIdx].size
+  const offsetY = ev.offsetY
+  const distanceFromText = Math.abs(y - offsetY)
+
+  if (distanceFromText <= currentFontSize / 2) {
+    gElCanvas.style.cursor = 'grab'
+    if (gIsClicked) {
+      onMoveText(ev)
+    }
+  } else {
+    gElCanvas.style.cursor = 'auto'
+  }
+}
+
+function onMoveText(ev) {
+  gElCanvas.style.cursor = 'grabbing'
+
+  const { selectedLineIdx } = gMeme
+
+  const currentFontSize = gMeme.lines[selectedLineIdx].size
+  const offsetY = ev.offsetY
+  const offsetX = ev.offsetX
+  console.log(offsetX)
+  const distanceFromText = Math.abs(gUpperY - offsetY)
+
+  if (selectedLineIdx === 0) {
+    console.log('gUpperY:', gUpperY)
+    gUpperY = offsetY
+    gUpperX = offsetX
+    console.log('gUpperX:', gUpperX)
+    console.log('offsetX:', offsetX)
+  } else {
+    gLowerY = offsetY
+    gLowerX = offsetX
+  }
+  clearCanvas()
+  renderMeme(gCanvasContainerWidth)
+  //   console.log(gUpperY)
+  // }
+  console.log(gUpperY)
+}
+
+function onDown() {
+  gIsClicked = true
+  gElCanvas.style.cursor = 'grabbing'
+}
+
+function onUp() {
+  gIsClicked = false
 }

@@ -67,14 +67,14 @@
     
     <div class="generator-container">
 
-        <div class="canvas-container" onclick="onCanvasClick(event)">
+        <div class="canvas-container" onmousemove="onEnterText(event, this)">
             <div class="text-edit">
 
             </div>
             <div class="line-select">
                 
             </div>
-                <canvas class="canvas">
+                <canvas class="canvas" onmousedown="onDown()" onmouseup="onUp()">
                 </canvas>
                 <div onmouseover="onOpenShareOptions(this)" onmouseleave="closeShareOptions()">
                     <button class="share-btn" onclick="onClickShare()" style="cursor: pointer;"><i class="fa-solid fa-share-from-square"></i></button>
