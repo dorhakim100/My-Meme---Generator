@@ -199,6 +199,12 @@ function onChangeColor(elColor) {
   const { selectedLineIdx } = gMeme
   gMeme.lines[selectedLineIdx].color = gFillColor
 
+  const elLineBorder = document.querySelector('.line-select')
+  elLineBorder.style.setProperty(
+    'border-color',
+    gMeme.lines[selectedLineIdx].color
+  )
+
   addText(selectedLineIdx)
 }
 
@@ -292,17 +298,47 @@ function switchLine() {
     elLineBorder.style.display = 'block'
     elLineBorder.style.top = ''
     // elLineBorder.style.bottom = '-50px'
-    elLineBorder.style.bottom = gCanvasContainerWidth / 9 + 'px'
+    const textPos = { x: gUpperX, y: gUpperY }
+
+    elLineBorder.style.bottom = gUpperY / 9 + 'px'
+    changeLinePos()
   } else {
     gMeme.selectedLineIdx = 0
 
     changeColorInput()
 
-    elLineBorder.style.top = gCanvasContainerWidth / 3.5 + 'px'
+    elLineBorder.style.top = gLowerY / 2.5 + 'px'
   }
+  let otherLine
+  selectedLineIdx === 0 ? (otherLine = 1) : (otherLine = 0)
+
+  elLineBorder.style.setProperty('border-color', gMeme.lines[otherLine].color)
 }
 
-function changeLinePos() {}
+function changeLinePos() {
+  const elLineBorder = document.querySelector('.line-select')
+  const { selectedLineIdx } = gMeme
+  let currY
+  if (selectedLineIdx === 1) {
+    currY = -gLowerY - gCanvasContainerWidth / 12
+    elLineBorder.style.bottom = currY + gCanvasMiddle * 2 + 'px'
+  } else if (selectedLineIdx === 0) {
+    currY = gUpperY - gCanvasContainerWidth * 1.65
+
+    elLineBorder.style.top = currY + gCanvasMiddle * 3.5 + 'px'
+  }
+  // const pos = getPosition(elLineBorder)
+  // const { x, y } = pos
+  // console.log(currY)
+}
+
+function getPosition(element) {
+  var rect = element.getBoundingClientRect()
+  return {
+    x: rect.left,
+    y: rect.top,
+  }
+}
 
 function copyOtherLine() {
   let otherLine
@@ -552,9 +588,11 @@ function onMoveText(ev) {
     gUpperX = offsetX
     console.log('gUpperX:', gUpperX)
     console.log('offsetX:', offsetX)
+    changeLinePos()
   } else {
     gLowerY = offsetY
     gLowerX = offsetX
+    changeLinePos()
   }
   clearCanvas()
   renderMeme(gCanvasContainerWidth)
