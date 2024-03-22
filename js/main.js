@@ -122,7 +122,7 @@ function addText(line) {
     y = gLowerY
     x = gLowerX
   }
-  console.log('x:', x)
+
   gCtx.lineWidth = 3
   gCtx.strokeStyle = gColor
 
