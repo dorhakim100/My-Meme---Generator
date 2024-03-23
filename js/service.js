@@ -155,7 +155,7 @@ function getMeme() {
 
 function resizeCanvas() {
   const gElContainer = document.querySelector('.canvas-container')
-  // Changing the canvas dimension clears the canvas
+
   gElCanvas.width = gElContainer.clientWidth
   gElCanvas.height = gElContainer.clientWidth
   gCanvasContainerWidth = gElContainer.clientWidth
