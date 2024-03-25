@@ -156,8 +156,8 @@ function getMeme() {
 function resizeCanvas() {
   const gElContainer = document.querySelector('.canvas-container')
 
-  gElCanvas.width = gElContainer.clientWidth
-  gElCanvas.height = gElContainer.clientWidth
+  gElCanvas.width = gElContainer.clientWidth - 15
+  gElCanvas.height = gElContainer.clientWidth - 15
   gCanvasContainerWidth = gElContainer.clientWidth
 
   gCanvasMiddle = gElCanvas.width / 2

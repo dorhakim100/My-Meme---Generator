@@ -591,7 +591,7 @@ function onMoveText(ev) {
     gLowerX = offsetX
     changeLinePos()
   }
-  clearCanvas()
+  // clearCanvas()
   renderMeme(gCanvasContainerWidth)
 }
 
